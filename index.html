@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materi & Video</title>
+</head>
+<body>
+  <h1>📘 Materi & Video Pembelajaran</h1>
+  <ul id="daftarMateri"></ul>
+
+  <script>
+    fetch('materi.json')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('daftarMateri');
+        data.forEach(m => {
+          const li = document.createElement('li');
+          li.innerHTML = `<b>${m.judul}</b> - <a href="${m.video}" target="_blank">Tonton Video</a>`;
+          list.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
